@@ -1,1 +1,1 @@
-# Continuous-Control
+# Continuous Control
