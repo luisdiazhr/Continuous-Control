@@ -1,23 +1,20 @@
-# Continuous Control
+# Project: Continuous Control
 
-For this project, the DDPG algorithm is implemented to solve the [Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher) environment.
+In this project, the DDPG algorithm is implemented to solve the [Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher) environment.
 
 ![reacher](reacher.gif "Reacher Environment")
 
 ### The Environment
-----
 
 In this environment, a double-jointed arm can move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible.
 
 The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
 ### Solving the Environment
-----
 
 The task is episodic and the environment is solved when the agent gets an average score of +30 over 100 consecutive episodes.
 
 ### Downloading the Environment
----
 
 1. Set up your Python environment. Install PyTorch, the ML-Agents toolkit, and a few more Python packages required to complete the project.
 
