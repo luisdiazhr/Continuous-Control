@@ -1,31 +1,23 @@
-# Report
+# Report: DDPG for Continuous Control
 
-## 1. Scope
-In this project the DDPG algorithm is implemented to solve the Reacher environment. This algorithm is composed by two elements: 
+## 1. Model
+In this project the DDPG algorithm is implemented to solve the Reacher environment. The Actor is represented by a neural network with
 
-- the Actor, a policy-based algorithm
-- and a Critic, a value-based algorithm
+- Fully connected layer 1: with input = 33 (state spaces) and output = 128
+- Fully connected layer 2: with input = 128 and output = 128
+- Fully connected layer 3: with input = 128 and output = 4 (for each of the 4 actions)
 
-It is proven that the performance is best when both algorithms work in conjunction. 
+In the other hand, the Critic neural network is composed by 
 
-## 2. Architecture
-The Actor is represented by a neural network with
+- Fully connected layer 1: with input = 33 (state spaces) and output = 128
+- Fully connected layer 2: with input = 128 (states and actions) and output = 128
+- Fully connected layer 3: with input = 128 and output = 1 (maps states and actions to Q-values)
 
-- Fully connected layer 1: with input = 33 (state spaces) and output = 400
-- Fully connected layer 2: with input = 400 and output = 300
-- Fully connected layer 3: with input = 300 and output = 4 (for each of the 4 actions)
-
-In the other hand, the Critic is depicted as a neural network with
-
-- Fully connected layer 1: with input = 33 (state spaces) and output = 400
-- Fully connected layer 2: with input = 404 (states and actions) and output = 300
-- Fully connected layer 3: with input = 300 and output = 1 (maps states and actions to Q-values)
-
-Introducing a batch normalization layer was a determinant factor to get valuable progress. Without it, the algorithm would be oscillating at average score of 4 after 300 episodes, which it clearly was not a good signal of good training. Another factor was the implementation of the gradient cliping method when updating the critic. 
+Introducing batch normalization layers for the hidden layers was a determinant factor to get some valuable results in this project. Without it, the algorithm would be oscillating at average score of 4 after 300 episodes, which it clearly was not a good signal of good training. Another factor was the implementation of the gradient cliping method when updating the critic. 
 
 ## 3. Hyperparameters
 
-Parameters are crucial to get a converging algorithm. Experimentation showed that learning rates had impact on the training progress.
+Experimentation showed that learning rates had impact on the training progress.
 
 | Parameter              | Value    | 
 | -----------------------|:--------:| 
@@ -39,3 +31,4 @@ Parameters are crucial to get a converging algorithm. Experimentation showed tha
 ## 4. Results
 
 ## 5. Future work
+
