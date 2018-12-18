@@ -1,6 +1,6 @@
 # Report: DDPG for Continuous Control
 
-In this project the DDPG algorithm is implemented to solve the Reacher environment (Twenty agents version). To accomplish the goal, I made a few adjustments to the original DDPG algorithm. In order to get the twenty agents trained, I made a single replay buffer share across all the agents. Instead of having twenty actor-critic networks, I send the twenty states corresponding to the twenty ages to a single actor-critic agent. This gets me twenty actions that I pass to the environment and so on. As a result, I get twenty rewards that I use to calculate the average score per episode. 
+In this project the DDPG algorithm is implemented to solve the Reacher environment (Twenty agents version). To accomplish the goal, I made a few adjustments to the original DDPG algorithm. In order to get the twenty agents trained, I made a single replay buffer shared across all the agents. Instead of having twenty actor-critic networks, I pass the twenty states coming from the observation vector seen by the anges to a single actor-critic agent. This gets me twenty actions that I pass to the environment. As a result, I get twenty rewards that I use to calculate the average score per episode.
 
 ## 1. Architectures
 After trying the original architectures and not getting a good result, I decided to change the number of hidden units on both models (actor and critic). The Actor is represented by a neural network composed by:
