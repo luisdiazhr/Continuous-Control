@@ -37,6 +37,6 @@ The environment takes 103 episodes to be solved!
 ![rewards](reward_plot.png "Rewards")
 
 ## 5. Future work
-I would like to implement D4PG.
+I would like to explore PPO and D4PG to see if I can get better results.
 
 
