@@ -1,9 +1,11 @@
 # Report: DDPG for Continuous Control
 
-In this project the DDPG algorithm is implemented to solve the Reacher environment (Twenty agents version). To accomplish the goal, I made a few adjustments to the original DDPG algorithm. In order to get the twenty agents trained, I made a single replay buffer shared across all the agents. Instead of having twenty actor-critic networks, I pass the twenty states coming from the observation vector seen by the anges to a single actor-critic agent. This gets me twenty actions that I pass to the environment. As a result, I get twenty rewards that I use to calculate the average score per episode.
+In this project the DDPG algorithm is implemented to solve the Reacher environment (Twenty agents version). To accomplish the goal, I made a few adjustments to the original DDPG algorithm. In order to get the twenty agents trained, I made a single replay buffer shared across all the agents. Instead of having twenty actor-critic networks, I pass the twenty states coming from the observation vector seen by the anges to a single actor-critic agent. This gets me twenty actions that I pass to the environment. As a result, I get twenty rewards that I use to calculate the average score per episode. The implementation is 
 
 ## 1. Architectures
-After trying the original architectures and not getting a good result, I decided to change the number of hidden units on both models (actor and critic). The Actor is represented by a neural network composed by:
+After trying the original architectures and not getting a good result, I decided to change the number of hidden units on both models (actor and critic). The file `model.py` implements the following architectures:
+
+The Actor is represented by a neural network composed by:
 
 - Fully connected layer 1: with input = 33 (state spaces) and output = 256
 - Fully connected layer 2: with input = 256 and output = 256
@@ -32,8 +34,7 @@ Experimentation showed that learning rates had impact on the training progress. 
 | TAU soft update target | 1e-3     |
 
 ## 4. Results
-The environment takes 103 episodes to be solved!
-
+The environment takes 103 episodes to be solved. Weights of both the actor and the critic networks are stored in `checkpoint_actor.pth` and `checkpoint_critic.pth` respectively. The scores are shown in the following figure:
 ![rewards](reward_plot.png "Rewards")
 
 ## 5. Future work
