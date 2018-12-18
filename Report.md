@@ -1,13 +1,13 @@
 # Report: DDPG for Continuous Control
 
 ## 1. Model
-In this project the DDPG algorithm is implemented to solve the Reacher environment. The Actor is represented by a neural network with
+In this project the DDPG algorithm is implemented to solve the Reacher environment. The Actor is represented by a neural network composed by:
 
 - Fully connected layer 1: with input = 33 (state spaces) and output = 128
 - Fully connected layer 2: with input = 128 and output = 128
 - Fully connected layer 3: with input = 128 and output = 4 (for each of the 4 actions)
 
-In the other hand, the Critic neural network is composed by 
+In the other hand, the Critic neural network is composed by: 
 
 - Fully connected layer 1: with input = 33 (state spaces) and output = 128
 - Fully connected layer 2: with input = 128 (states and actions) and output = 128
@@ -32,3 +32,4 @@ Experimentation showed that learning rates had impact on the training progress.
 
 ## 5. Future work
 
+I would like to test the algorithm on the 20 agents environment.
