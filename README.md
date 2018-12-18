@@ -1,6 +1,6 @@
 # Project: Continuous Control 
 
-In this project, the DDPG algorithm is implemented to solve the [Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher) environment (Twenty (20) agents version)
+In this project, the DDPG algorithm is implemented to solve the [Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher) environment (Twenty agents version).
 
 ![reacher](reacher.gif "Reacher Environment")
 
@@ -27,4 +27,4 @@ The twenty agents must get an average score of +30 (over 100 consecutive episode
 
 3. Then, place the file in the main folder of this repository, and unzip (or decompress) the file.
 
-4. Open Continuous_Control.ipynb and follow the instructions.
+4. Open `Continuous_Control.ipynb` and follow the instructions.
