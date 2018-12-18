@@ -1,23 +1,26 @@
 # Report: DDPG for Continuous Control
 
-## 1. Model
-In this project the DDPG algorithm is implemented to solve the Reacher environment. The Actor is represented by a neural network composed by:
+In this project the DDPG algorithm is implemented to solve the Reacher environment (Twenty agents version). To accomplish the goal, I made a few adjustments to the original DDPG algorithm. In order to get the twenty agents trained, I made a single replay buffer share across all the agents. Instead of having twenty actor-critic networks, I send the twenty states corresponding to the twenty ages to a single actor-critic agent. This gets me twenty actions that I pass to the environment and so on. As a result, I get twenty rewards that I use to calculate the average score per episode. 
 
-- Fully connected layer 1: with input = 33 (state spaces) and output = 128
-- Fully connected layer 2: with input = 128 and output = 128
-- Fully connected layer 3: with input = 128 and output = 4 (for each of the 4 actions)
+## 1. Architectures
+After trying the original architectures and not getting a good result, I decided to change the number of hidden units on both models (actor and critic). The Actor is represented by a neural network composed by:
+
+- Fully connected layer 1: with input = 33 (state spaces) and output = 256
+- Fully connected layer 2: with input = 256 and output = 256
+- Fully connected layer 3: with input = 256 and output = 4 (for each of the 4 actions)
 
 In the other hand, the Critic neural network is composed by: 
 
-- Fully connected layer 1: with input = 33 (state spaces) and output = 128
-- Fully connected layer 2: with input = 128 (states and actions) and output = 128
-- Fully connected layer 3: with input = 128 and output = 1 (maps states and actions to Q-values)
+- Fully connected layer 1: with input = 33 (state spaces) and output = 256
+- Fully connected layer 2: with input = 256 (states and actions) and output = 256
+- Fully connected layer 3: with input = 256 and output = 1 (maps states and actions to Q-values)
 
-Introducing batch normalization layers for the hidden layers was a determinant factor to get some valuable results in this project. Without it, the algorithm would be oscillating at average score of 4 after 300 episodes, which it clearly was not a good signal of good training. Another factor was the implementation of the gradient cliping method when updating the critic. 
+## 2. Improvements
+Introducing batch normalization layers for the hidden layers was a determinant factor to get some progress. It looks like the agent learnt faster than before. Another key factor to succeed was the implementation of the gradient cliping method when updating the critic. 
 
 ## 3. Hyperparameters
 
-Experimentation showed that learning rates had impact on the training progress.
+Experimentation showed that learning rates had impact on the training progress. I adjusted the original learning rates. The previous ones were LR_Actor = 1e-3, LR_Critic = 1e-4. The new parameters are shown below:
 
 | Parameter              | Value    | 
 | -----------------------|:--------:| 
@@ -29,7 +32,11 @@ Experimentation showed that learning rates had impact on the training progress.
 | TAU soft update target | 1e-3     |
 
 ## 4. Results
+The environment takes 103 episodes to be solved!
+
+![rewards](reward_plot.png "Rewards")
 
 ## 5. Future work
+I would like to implement D4PG.
 
-I would like to test the algorithm on the 20 agents environment.
+
