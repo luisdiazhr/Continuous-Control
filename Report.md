@@ -21,7 +21,7 @@ In the other hand, the Critic is depicted as a neural network with
 - Fully connected layer 2: with input = 404 (states and actions) and output = 300
 - Fully connected layer 3: with input = 300 and output = 1 (maps states and actions to Q-values)
 
-Introducing a batch normalization layer was a determinant factor to get progress. Without it, the algorithm would be oscillating at average score of 4 after 300 episodes, which it clearly was not a good signal of good training.
+Introducing a batch normalization layer was a determinant factor to get valuable progress. Without it, the algorithm would be oscillating at average score of 4 after 300 episodes, which it clearly was not a good signal of good training. Another factor was the implementation of the gradient cliping method when updating the critic. 
 
 ## 3. Hyperparameters
 
